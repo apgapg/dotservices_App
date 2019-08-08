@@ -25,6 +25,13 @@ class ApiHelper {
     return NetworkResponse(response);
   }
 
+  Future<NetworkResponse> post(
+      {@required String endpoint, @required String body}) async {
+    http.Response response = await http.post(baseUrl + endpoint,
+        headers: {"Content-Type": "application/json"}, body: body);
+    return NetworkResponse(response);
+  }
+
 /* Future<NetworkResponse> post({@required String endpoint, String url, bool includeToken = true, @required String body}) async {
     http.Response response = await http.post(checkIfNotEmpty(url) ? url : (baseUrl + endpoint), headers: headers, body: body);
     return NetworkResponse(response);

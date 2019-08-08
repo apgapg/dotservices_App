@@ -1,4 +1,5 @@
 import 'package:dot_my_services/model/client_model.dart';
+import 'package:dot_my_services/pages/info_page.dart';
 import 'package:dot_my_services/utils/toast_utils.dart';
 import 'package:dot_my_services/widgets/border_container.dart';
 import 'package:flutter/material.dart';
@@ -20,9 +21,17 @@ class _ClientPageState extends State<ClientPage> {
       appBar: AppBar(
         title: Text(
           "Details",
-          style: TextStyle(color: Colors.black87),
+          style: TextStyle(color: Colors.black87, fontWeight: FontWeight.w700),
         ),
         backgroundColor: Colors.white,
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.info_outline),
+            onPressed: () {
+              onInfoTap();
+            },
+          )
+        ],
       ),
       body: Container(
         child: SingleChildScrollView(
@@ -50,7 +59,7 @@ class _ClientPageState extends State<ClientPage> {
                         Text(
                           widget.item.description,
                           style: TextStyle(
-                            fontSize: 13,
+                            fontSize: 14,
                             color: Colors.grey[800],
                           ),
                         ),
@@ -71,26 +80,32 @@ class _ClientPageState extends State<ClientPage> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: <Widget>[
-                            Wrap(
-                              children: <Widget>[
-                                for (Category category
-                                    in widget.item.categories)
-                                  Container(
-                                    padding: EdgeInsets.symmetric(
-                                        horizontal: 12, vertical: 8),
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(8),
-                                      color: Colors.blueGrey[50],
-                                    ),
-                                    child: Text(
-                                      category.category,
-                                      style: TextStyle(
-                                        fontSize: 14,
-                                        fontWeight: FontWeight.w700,
+                            Flexible(
+                              fit: FlexFit.tight,
+                              flex: 1,
+                              child: Wrap(
+                                children: <Widget>[
+                                  for (Category category
+                                      in widget.item.categories)
+                                    Container(
+                                      padding: EdgeInsets.symmetric(
+                                          horizontal: 12, vertical: 8),
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(8),
+                                        color: Colors.blueGrey[50],
+                                      ),
+                                      child: Text(
+                                        category.category,
+                                        style: TextStyle(
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.w700,
+                                        ),
                                       ),
                                     ),
-                                  ),
-                              ],
+                                ],
+                                spacing: 8,
+                                runSpacing: 8,
+                              ),
                             ),
                           ],
                         ),
@@ -189,5 +204,13 @@ class _ClientPageState extends State<ClientPage> {
     } else {
       ToastUtils.showToast(message: 'Couldnt call');
     }
+  }
+
+  void onInfoTap() {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) => InfoPage(),
+      ),
+    );
   }
 }

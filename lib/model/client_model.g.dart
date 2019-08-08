@@ -23,16 +23,6 @@ ClientItem _$ClientItemFromJson(Map<String, dynamic> json) {
           ?.toList());
 }
 
-Map<String, dynamic> _$ClientItemToJson(ClientItem instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'name': instance.name,
-      'number': instance.number,
-      'description': instance.description,
-      'area': instance.area,
-      'areas': instance.areas,
-      'categories': instance.categories
-    };
 
 Category _$CategoryFromJson(Map<String, dynamic> json) {
   return Category(json['category'] as String);
@@ -56,10 +46,3 @@ Advertisement _$AdvertisementFromJson(Map<String, dynamic> json) {
           ? null
           : ClientItem.fromJson(json['client'] as Map<String, dynamic>));
 }
-
-Map<String, dynamic> _$AdvertisementToJson(Advertisement instance) =>
-    <String, dynamic>{
-      'image': instance.image,
-      'visibility': instance.visibility,
-      'client': instance.client
-    };

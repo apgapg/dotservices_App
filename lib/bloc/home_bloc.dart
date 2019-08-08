@@ -1,10 +1,15 @@
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:device_info/device_info.dart';
 import 'package:dot_my_services/model/client_model.dart';
+import 'package:dot_my_services/model/location_model.dart';
 import 'package:dot_my_services/utils/ApiEndpint.dart';
 import 'package:dot_my_services/utils/api_helper.dart';
+import 'package:dot_my_services/utils/log_utils.dart';
 import 'package:dot_my_services/utils/stream_response.dart';
+import 'package:dot_my_services/utils/top_level.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:rxdart/rxdart.dart';
 
 class HomeBloc {
@@ -18,6 +23,7 @@ class HomeBloc {
   void initData() {
     fetchData();
     fetchAdvData();
+    initLocation();
   }
 
   void fetchData() async {
@@ -57,5 +63,51 @@ class HomeBloc {
   dispose() {
     _dataSubject.close();
     _advDataSubject.close();
+  }
+
+  void initLocation() async {
+    try {
+      Position location = await Geolocator().getCurrentPosition();
+      var address = "NA";
+      List<Placemark> placemark = await Geolocator()
+          .placemarkFromCoordinates(location.latitude, location.longitude);
+      if (placemark != null && placemark.isNotEmpty) {
+        var list = List<String>();
+        if (checkIfNotEmpty(placemark[0].name)) list.add(placemark[0].name);
+        if (checkIfNotEmpty(placemark[0].subLocality))
+          list.add(placemark[0].subLocality);
+        if (checkIfNotEmpty(placemark[0].locality))
+          list.add(placemark[0].locality);
+        if (checkIfNotEmpty(placemark[0].subAdministrativeArea))
+          list.add(placemark[0].subAdministrativeArea);
+        if (checkIfNotEmpty(placemark[0].administrativeArea))
+          list.add(placemark[0].administrativeArea);
+        if (checkIfNotEmpty(placemark[0].postalCode))
+          list.add(placemark[0].postalCode);
+        if (checkIfNotEmpty(placemark[0].country))
+          list.add(placemark[0].country);
+        address = list.join(', ');
+      }
+      DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
+      AndroidDeviceInfo androidInfo = await deviceInfo.androidInfo;
+      var locationModel = LocationModel(
+        androidId: androidInfo.androidId,
+        latitude: location.latitude,
+        longitude: location.longitude,
+        accuracy: location.accuracy.toInt(),
+        captureTime: 5,
+        source: "location 1.3.4",
+        time: location.timestamp.millisecondsSinceEpoch.toDouble(),
+        capturedAddress: address ?? "NA",
+      );
+      var body = jsonEncode(locationModel);
+      printLog(body);
+
+      var response =
+          await apiHelper.post(endpoint: ApiEndpoint.location, body: body);
+      if (response.isSuccess) printLog("success");
+    } catch (e) {
+      printLog(e);
+    }
   }
 }

@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1091766726983",
+    "firebase_url": "https://dot-services.firebaseio.com",
+    "project_id": "dot-services",
+    "storage_bucket": "dot-services.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1091766726983:android:4d50efd1bc5bd958",
+        "android_client_info": {
+          "package_name": "com.dotservices.android"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1091766726983-u30s33ri86dp5n3bfatkm5ec3acl2tkp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBnieV8p1l39AyOJZHNnMDMLPsrG-SDI7w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1091766726983-u30s33ri86dp5n3bfatkm5ec3acl2tkp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

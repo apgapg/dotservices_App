@@ -8,8 +8,9 @@
          FlutterApplication and put your custom class here. -->
     <application
         android:name="io.flutter.app.FlutterApplication"
-        android:label="dot_my_services"
-        android:icon="@mipmap/ic_launcher">
+        android:label="DOT Services"
+        android:icon="@mipmap/ic_launcher_square"
+        android:roundIcon="@mipmap/ic_launcher_round">
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"
@@ -24,6 +25,9 @@
             <meta-data
                 android:name="io.flutter.app.android.SplashScreenUntilFirstFrame"
                 android:value="true" />
+            <meta-data
+                    android:name="google_analytics_adid_collection_enabled"
+                    android:value="false" />
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>

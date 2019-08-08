@@ -3,6 +3,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:dot_my_services/bloc/home_bloc.dart';
 import 'package:dot_my_services/model/client_model.dart';
 import 'package:dot_my_services/pages/client_page.dart';
+import 'package:dot_my_services/pages/info_page.dart';
 import 'package:dot_my_services/utils/stream_error_widget.dart';
 import 'package:dot_my_services/widgets/client_card.dart';
 import 'package:flutter/material.dart';
@@ -27,9 +28,23 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: Text(
           "DOT Services",
-          style: TextStyle(color: Colors.black87),
+          style: TextStyle(color: Colors.black87, fontWeight: FontWeight.w700),
         ),
+        /*leading: Container(
+          padding: EdgeInsets.symmetric(vertical: 8),
+          child: Image.asset(
+            "assets/images/logo.png",
+          ),
+        ),*/
         backgroundColor: Colors.white,
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.info_outline),
+            onPressed: () {
+              onInfoTap();
+            },
+          )
+        ],
       ),
       body: Container(
         child: StreamBuilder(
@@ -92,7 +107,9 @@ class _HomePageState extends State<HomePage> {
                                     },
                                   ).toList(),
                                   InkWell(
-                                    onTap: () {},
+                                    onTap: () {
+                                      onInfoTap();
+                                    },
                                     child: Container(
                                       width: MediaQuery.of(context).size.width,
                                       margin:
@@ -172,6 +189,14 @@ class _HomePageState extends State<HomePage> {
     Navigator.of(context).push(
       MaterialPageRoute(
         builder: (context) => ClientPage(item),
+      ),
+    );
+  }
+
+  void onInfoTap() {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) => InfoPage(),
       ),
     );
   }

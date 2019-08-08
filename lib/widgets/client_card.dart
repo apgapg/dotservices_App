@@ -68,25 +68,31 @@ class ClientCard extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
-                        Wrap(
-                          children: <Widget>[
-                            for (Category category in item.categories)
-                              Container(
-                                padding: EdgeInsets.symmetric(
-                                    horizontal: 12, vertical: 8),
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(8),
-                                  color: Colors.blueGrey[50],
-                                ),
-                                child: Text(
-                                  category.category,
-                                  style: TextStyle(
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w700,
+                        Flexible(
+                          flex: 1,
+                          fit: FlexFit.tight,
+                          child: Wrap(
+                            children: <Widget>[
+                              for (Category category in item.categories)
+                                Container(
+                                  padding: EdgeInsets.symmetric(
+                                      horizontal: 12, vertical: 8),
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(8),
+                                    color: Colors.blueGrey[50],
+                                  ),
+                                  child: Text(
+                                    category.category,
+                                    style: TextStyle(
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w700,
+                                    ),
                                   ),
                                 ),
-                              ),
-                          ],
+                            ],
+                            spacing: 8,
+                            runSpacing: 8,
+                          ),
                         ),
                         Container(
                           padding:
