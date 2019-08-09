@@ -1,5 +1,6 @@
 import 'package:dot_my_services/utils/stream_response.dart';
 import 'package:dot_my_services/widgets/internet_not_available.dart';
+import 'package:dot_my_services/widgets/primary_raised_button.dart';
 import 'package:dot_my_services/widgets/server_error_widget.dart';
 import 'package:dot_my_services/widgets/unknown_error_widget.dart';
 import 'package:flutter/material.dart';
@@ -13,7 +14,21 @@ class StreamErrorWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Widget widget = getWidget();
-    return widget;
+    return Center(
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          widget,
+          SizedBox(
+            height: 32,
+          ),
+          PrimaryRaisedButton(
+            text: "REFRESH",
+            onTap: onTap,
+          )
+        ],
+      ),
+    );
   }
 
   Widget getWidget() {

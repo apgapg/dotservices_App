@@ -29,7 +29,7 @@ class HomeBloc {
   void fetchData() async {
     try {
       _dataSubject.sink.add(null);
-      var response = await apiHelper.get(endpoint: ApiEndpoint.client);
+      var response = await apiHelper.get(endpoint: ApiEndpoint.clients);
       if (response.isSuccess) {
         var model = ClientModel.fromMapList(list: json.decode(response.body));
         _dataSubject.sink.add(model.list);

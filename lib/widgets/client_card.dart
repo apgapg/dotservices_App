@@ -1,4 +1,5 @@
 import 'package:dot_my_services/model/client_model.dart';
+import 'package:dot_my_services/pages/category_page.dart';
 import 'package:dot_my_services/widgets/border_container.dart';
 import 'package:flutter/material.dart';
 
@@ -74,18 +75,23 @@ class ClientCard extends StatelessWidget {
                           child: Wrap(
                             children: <Widget>[
                               for (Category category in item.categories)
-                                Container(
-                                  padding: EdgeInsets.symmetric(
-                                      horizontal: 12, vertical: 8),
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(8),
-                                    color: Colors.blueGrey[50],
-                                  ),
-                                  child: Text(
-                                    category.category,
-                                    style: TextStyle(
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.w700,
+                                InkWell(
+                                  onTap: () {
+                                    onCategoryTap(category, context);
+                                  },
+                                  child: Container(
+                                    padding: EdgeInsets.symmetric(
+                                        horizontal: 12, vertical: 8),
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(8),
+                                      color: Colors.blueGrey[50],
+                                    ),
+                                    child: Text(
+                                      category.category,
+                                      style: TextStyle(
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.w700,
+                                      ),
                                     ),
                                   ),
                                 ),
@@ -121,5 +127,10 @@ class ClientCard extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  void onCategoryTap(Category category, BuildContext context) {
+    Navigator.of(context)
+        .push(MaterialPageRoute(builder: (context) => CategoryPage(category)));
   }
 }

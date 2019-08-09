@@ -1,6 +1,8 @@
 import 'package:dot_my_services/model/client_model.dart';
+import 'package:dot_my_services/pages/category_page.dart';
 import 'package:dot_my_services/pages/info_page.dart';
 import 'package:dot_my_services/utils/toast_utils.dart';
+import 'package:dot_my_services/utils/top_level.dart';
 import 'package:dot_my_services/widgets/border_container.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -87,18 +89,24 @@ class _ClientPageState extends State<ClientPage> {
                                 children: <Widget>[
                                   for (Category category
                                       in widget.item.categories)
-                                    Container(
-                                      padding: EdgeInsets.symmetric(
-                                          horizontal: 12, vertical: 8),
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(8),
-                                        color: Colors.blueGrey[50],
-                                      ),
-                                      child: Text(
-                                        category.category,
-                                        style: TextStyle(
-                                          fontSize: 14,
-                                          fontWeight: FontWeight.w700,
+                                    InkWell(
+                                      onTap: () {
+                                        onCategoryTap(category, context);
+                                      },
+                                      child: Container(
+                                        padding: EdgeInsets.symmetric(
+                                            horizontal: 12, vertical: 8),
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(8),
+                                          color: Colors.blueGrey[50],
+                                        ),
+                                        child: Text(
+                                          category.category,
+                                          style: TextStyle(
+                                            fontSize: 14,
+                                            fontWeight: FontWeight.w700,
+                                          ),
                                         ),
                                       ),
                                     ),
@@ -125,11 +133,28 @@ class _ClientPageState extends State<ClientPage> {
                             Flexible(
                               fit: FlexFit.tight,
                               flex: 1,
-                              child: Text(
-                                widget.item.areas
-                                    .map((area) => area.area)
-                                    .join(", "),
-                                style: TextStyle(color: Colors.grey[800]),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: <Widget>[
+                                  Padding(
+                                    padding: const EdgeInsets.only(top: 4.0),
+                                    child: Text(
+                                      widget.item.areas
+                                          .map((area) => area.area)
+                                          .join(", "),
+                                      style: TextStyle(color: Colors.grey[800]),
+                                    ),
+                                  ),
+                                  if (checkIfNotEmpty(widget.item.address))
+                                    Padding(
+                                      padding: const EdgeInsets.only(top: 8.0),
+                                      child: Text(
+                                        widget.item.address,
+                                        style:
+                                            TextStyle(color: Colors.grey[800]),
+                                      ),
+                                    ),
+                                ],
                               ),
                             ),
                             SizedBox(
@@ -212,5 +237,10 @@ class _ClientPageState extends State<ClientPage> {
         builder: (context) => InfoPage(),
       ),
     );
+  }
+
+  void onCategoryTap(Category category, BuildContext context) {
+    Navigator.of(context)
+        .push(MaterialPageRoute(builder: (context) => CategoryPage(category)));
   }
 }

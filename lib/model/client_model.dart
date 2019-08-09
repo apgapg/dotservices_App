@@ -27,6 +27,7 @@ class ClientItem {
   final String number;
   final String description;
   final String area;
+  final String address;
   final List<Area> areas;
   final List<Category> categories;
 
@@ -38,17 +39,38 @@ class ClientItem {
     this.description,
     this.area,
     this.areas,
+    this.address,
   );
 
   factory ClientItem.fromJson(Map<String, dynamic> json) =>
       _$ClientItemFromJson(json);
 }
 
+class CategoryModel {
+  List<Category> list;
+
+  CategoryModel._internal(this.list);
+
+  factory CategoryModel.fromJson(dynamic json) {
+    return CategoryModel.fromMapList(list: json as List);
+  }
+
+  factory CategoryModel.fromMapList({List<dynamic> list}) {
+    final items =
+        list.cast<Map<String, Object>>().map((Map<String, Object> item) {
+      return Category.fromJson(item);
+    }).toList();
+    return CategoryModel._internal(items);
+  }
+}
+
 @JsonSerializable()
 class Category {
+  @JsonKey(name: "_id")
+  final String id;
   final String category;
 
-  Category(this.category);
+  Category(this.id, this.category);
 
   factory Category.fromJson(Map<String, dynamic> json) =>
       _$CategoryFromJson(json);

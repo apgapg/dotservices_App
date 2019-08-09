@@ -4,6 +4,7 @@ import 'package:dot_my_services/bloc/home_bloc.dart';
 import 'package:dot_my_services/model/client_model.dart';
 import 'package:dot_my_services/pages/client_page.dart';
 import 'package:dot_my_services/pages/info_page.dart';
+import 'package:dot_my_services/pages/search_page.dart';
 import 'package:dot_my_services/utils/stream_error_widget.dart';
 import 'package:dot_my_services/widgets/client_card.dart';
 import 'package:flutter/material.dart';
@@ -43,6 +44,12 @@ class _HomePageState extends State<HomePage> {
             onPressed: () {
               onInfoTap();
             },
+          ),
+          IconButton(
+            icon: Icon(Icons.search),
+            onPressed: () {
+              onSearchTap();
+            },
           )
         ],
       ),
@@ -79,13 +86,9 @@ class _HomePageState extends State<HomePage> {
                                               onClientTap(i.client);
                                             },
                                             child: Container(
-                                              width: MediaQuery.of(context)
-                                                  .size
-                                                  .width,
                                               margin: EdgeInsets.symmetric(
                                                   horizontal: 5.0),
                                               decoration: BoxDecoration(
-                                                color: Colors.grey[200],
                                                 borderRadius:
                                                     BorderRadius.circular(4),
                                               ),
@@ -131,7 +134,7 @@ class _HomePageState extends State<HomePage> {
                                               height: 12,
                                             ),
                                             Text(
-                                              "Your Advertisement\nHere",
+                                              "Your Advertisement\nHere\n\nClick to Register  ",
                                               style: TextStyle(fontSize: 18),
                                               textAlign: TextAlign.center,
                                             ),
@@ -197,6 +200,14 @@ class _HomePageState extends State<HomePage> {
     Navigator.of(context).push(
       MaterialPageRoute(
         builder: (context) => InfoPage(),
+      ),
+    );
+  }
+
+  void onSearchTap() {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) => SearchPage(),
       ),
     );
   }
