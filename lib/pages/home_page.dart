@@ -147,8 +147,8 @@ class _HomePageState extends State<HomePage> {
                                 ]),
                           );
                         else if (advSnapshot.hasError) {
-                          return StreamErrorWidget(advSnapshot.error, () {
-                            bloc.fetchAdvData();
+                          return StreamErrorWidget(advSnapshot.error, ()  {
+                            bloc.initData();
                           });
                         } else
                           return Center(
@@ -168,7 +168,7 @@ class _HomePageState extends State<HomePage> {
               );
             } else if (snapshot.hasError) {
               return StreamErrorWidget(snapshot.error, () {
-                bloc.fetchData();
+                bloc.initData();
               });
             } else {
               return Center(

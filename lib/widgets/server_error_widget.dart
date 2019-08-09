@@ -3,11 +3,9 @@ import 'package:flutter/material.dart';
 
 class ServerErrorWidget extends StatelessWidget {
   final String message;
+  final VoidCallback onTap;
 
-  ///A widget to show an error returned from server api
-  ///
-  ///Use only when you want to display unknown error like 500 etc
-  ServerErrorWidget(this.message);
+  ServerErrorWidget(this.message, this.onTap);
 
   @override
   Widget build(BuildContext context) {
@@ -31,6 +29,20 @@ class ServerErrorWidget extends StatelessWidget {
                     fontSize: 20,
                   ),
             ),
+            SizedBox(
+              height: 24,
+            ),
+            RaisedButton(
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(4)),
+                color: Theme.of(context).primaryColor,
+                textColor: Colors.white,
+                child: Text(
+                  "REFRESH",
+                  style: TextStyle(
+                      color: Colors.white, fontWeight: FontWeight.w700),
+                ),
+                onPressed: onTap),
           ],
         ),
       ),
