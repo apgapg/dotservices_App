@@ -134,7 +134,7 @@ class _HomePageState extends State<HomePage> {
                                               height: 12,
                                             ),
                                             Text(
-                                              "Your Advertisement\nHere\n\nClick to Register  ",
+                                              "Advertise here\n\nClick to know more  ",
                                               style: TextStyle(fontSize: 18),
                                               textAlign: TextAlign.center,
                                             ),
