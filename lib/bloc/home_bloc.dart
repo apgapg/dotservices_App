@@ -39,6 +39,7 @@ class HomeBloc {
     } on SocketException catch (e) {
       _dataSubject.addError(StreamError.offline());
     } catch (e) {
+      print(e);
       _dataSubject.addError(StreamError.unknownError());
     }
   }

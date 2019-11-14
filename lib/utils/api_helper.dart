@@ -10,7 +10,7 @@ ApiHelper apiHelper = new ApiHelper();
 class ApiHelper {
   static final ApiHelper _instance = new ApiHelper._internal();
 
-  final String baseUrl = "http://13.234.222.6/";
+  final String baseUrl = "https://dotservices.azurewebsites.net/";
 
   factory ApiHelper() {
     return _instance;

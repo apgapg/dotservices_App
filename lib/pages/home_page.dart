@@ -74,8 +74,8 @@ class _HomePageState extends State<HomePage> {
                           return Container(
                             child: CarouselSlider(
                                 autoPlay: true,
-                                height: 200.0,
-                                viewportFraction: 0.8,
+                                height: 350.0,
+                                viewportFraction: 0.4,
                                 items: [
                                   ...advSnapshot.data.map(
                                     (Advertisement i) {
@@ -93,7 +93,7 @@ class _HomePageState extends State<HomePage> {
                                                     BorderRadius.circular(4),
                                               ),
                                               alignment: Alignment.center,
-                                              child: CachedNetworkImage(
+                                              /*child: CachedNetworkImage(
                                                 imageUrl: i.image,
                                                 placeholder: (context, url) =>
                                                     new CircularProgressIndicator(
@@ -102,7 +102,8 @@ class _HomePageState extends State<HomePage> {
                                                 errorWidget:
                                                     (context, url, error) =>
                                                         new Icon(Icons.error),
-                                              ),
+                                              ),*/
+                                              child: Image.network(i.image),
                                             ),
                                           );
                                         },
