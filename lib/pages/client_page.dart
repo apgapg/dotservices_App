@@ -189,6 +189,22 @@ class _ClientPageState extends State<ClientPage> {
                           SizedBox(
                             height: 8,
                           ),
+                          Text(
+                            "MOBILE",
+                            style: TextStyle(fontWeight: FontWeight.w700),
+                          ),
+                          SizedBox(
+                            height: 8,
+                          ),
+                          Text(
+                            "+91 -  ${widget.item.number}",
+                            style: TextStyle(
+                              fontSize: 14,
+                            ),
+                          ),
+                          SizedBox(
+                            height: 16,
+                          ),
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.stretch,
                             children: <Widget>[
@@ -196,6 +212,8 @@ class _ClientPageState extends State<ClientPage> {
                                 onPressed: () {
                                   onPhoneTap(widget.item.number);
                                 },
+                                elevation: 2,
+                                focusElevation: 4,
                                 child: Row(
                                   mainAxisSize: MainAxisSize.min,
                                   children: <Widget>[
