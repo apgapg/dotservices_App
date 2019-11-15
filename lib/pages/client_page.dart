@@ -2,11 +2,9 @@ import 'package:dot_my_services/model/client_model.dart';
 import 'package:dot_my_services/pages/category_page.dart';
 import 'package:dot_my_services/pages/info_page.dart';
 import 'package:dot_my_services/utils/app_utils.dart';
-import 'package:dot_my_services/utils/toast_utils.dart';
 import 'package:dot_my_services/utils/top_level.dart';
 import 'package:dot_my_services/widgets/border_container.dart';
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class ClientPage extends StatefulWidget {
   final ClientItem item;
@@ -152,8 +150,7 @@ class _ClientPageState extends State<ClientPage> {
                                         widget.item.areas
                                             .map((area) => area.area)
                                             .join(", "),
-                                        style:
-                                            TextStyle(color: Colors.grey[800]),
+                                        style: TextStyle(),
                                       ),
                                     ),
                                     if (checkIfNotEmpty(widget.item.address))
