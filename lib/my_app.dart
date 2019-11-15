@@ -19,8 +19,12 @@ class MyApp extends StatelessWidget {
         appBarTheme: AppBarTheme(
           iconTheme: IconThemeData(color: Colors.black87),
           elevation: 2,
+          color: Colors.white,
         ),
         fontFamily: 'Nunito',
+      ),
+      darkTheme: ThemeData(
+        brightness: Brightness.dark,
       ),
       home: HomePage(),
     );

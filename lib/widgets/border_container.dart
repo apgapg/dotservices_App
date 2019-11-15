@@ -21,6 +21,7 @@ class BorderContainer extends StatelessWidget {
       child: child,
       margin: margin,
       padding: padding,
+      alignment: Alignment.center,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.all(
           Radius.circular(6.0),

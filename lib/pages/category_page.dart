@@ -32,9 +32,7 @@ class _CategoryPageState extends State<CategoryPage> {
       appBar: AppBar(
         title: Text(
           widget.categoryItem.category,
-          style: TextStyle(color: Colors.black87, fontWeight: FontWeight.w700),
         ),
-        backgroundColor: Colors.white,
       ),
       body: Container(
         child: StreamBuilder(
@@ -44,16 +42,19 @@ class _CategoryPageState extends State<CategoryPage> {
               var list = snapshot.data;
               if (list.length > 0) {
                 return ListView(
-                  padding: EdgeInsets.symmetric(vertical: 8),
+                  padding: EdgeInsets.symmetric(vertical: 8,horizontal: 8),
                   children: <Widget>[
                     InfoWidget("Showing all with '${widget.categoryItem.category}' category"),
                     ...list
                         .map(
-                          (item) => ClientCard(
-                            item,
-                            () {
-                              onClientTap(item);
-                            },
+                          (item) => Container(
+                            margin: EdgeInsets.symmetric(vertical: 4),
+                            child: ClientCard(
+                              item,
+                              () {
+                                onClientTap(item);
+                              },
+                            ),
                           ),
                         )
                         .toList(),

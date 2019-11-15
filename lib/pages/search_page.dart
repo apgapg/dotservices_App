@@ -2,6 +2,7 @@ import 'package:dot_my_services/bloc/search_bloc.dart';
 import 'package:dot_my_services/model/client_model.dart';
 import 'package:dot_my_services/pages/category_page.dart';
 import 'package:dot_my_services/utils/stream_error_widget.dart';
+import 'package:dot_my_services/widgets/border_container.dart';
 import 'package:dot_my_services/widgets/no_items_found.dart';
 import 'package:flutter/material.dart';
 
@@ -25,9 +26,7 @@ class _SearchPageState extends State<SearchPage> {
       appBar: AppBar(
         title: Text(
           "Search",
-          style: TextStyle(color: Colors.black87, fontWeight: FontWeight.w700),
         ),
-        backgroundColor: Colors.white,
       ),
       body: StreamBuilder(
         stream: bloc.dataStream,
@@ -37,33 +36,36 @@ class _SearchPageState extends State<SearchPage> {
             if (list.length > 0) {
               return GridView(
                 padding: EdgeInsets.symmetric(vertical: 8, horizontal: 6),
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2, childAspectRatio: 2.5),
+                gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+                  maxCrossAxisExtent: 300,
+                  childAspectRatio: 3,
+                ),
                 children: <Widget>[
                   ...list
                       .map(
-                        (category) => InkWell(
-                          onTap: () {
-                            onCategoryTap(category, context);
-                          },
-                          child: Container(
-                            margin: EdgeInsets.symmetric(
-                                vertical: 4, horizontal: 4),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(8),
-                              color: Colors.blueGrey[50],
-                            ),
-                            alignment: Alignment.center,
-                            child: Container(
-                              padding: EdgeInsets.symmetric(
-                                  horizontal: 12, vertical: 8),
-                              child: Text(
-                                category.category,
-                                style: TextStyle(
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w700,
+                        (category) => BorderContainer(
+                          margin: EdgeInsets.symmetric(
+                            vertical: 4,
+                            horizontal: 4,
+                          ),
+                          child: Material(
+                            color: Colors.transparent,
+                            child: InkWell(
+                              onTap: () {
+                                onCategoryTap(category, context);
+                              },
+                              child: Container(
+                                padding: EdgeInsets.symmetric(
+                                    horizontal: 12, vertical: 8),
+                                alignment: Alignment.center,
+                                child: Text(
+                                  category.category,
+                                  style: TextStyle(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w700,
+                                  ),
+                                  textAlign: TextAlign.center,
                                 ),
-                                textAlign: TextAlign.center,
                               ),
                             ),
                           ),
@@ -91,7 +93,10 @@ class _SearchPageState extends State<SearchPage> {
   }
 
   void onCategoryTap(Category category, BuildContext context) {
-    Navigator.of(context)
-        .push(MaterialPageRoute(builder: (context) => CategoryPage(category)));
+    Navigator.of(context).push(
+      PageRouteBuilder(
+        pageBuilder: (context, a1, a2) => CategoryPage(category),
+      ),
+    );
   }
 }
