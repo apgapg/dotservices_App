@@ -17,7 +17,7 @@ class AppUtils {
   }
 
   static void onMailTap() async {
-    var url = 'mailto:dotcompany@gmail.com?subject=Information&body=Hi';
+    var url = 'mailto:dotappservices@gmail.com?subject=Information&body=Hi';
     if (kIsWeb) {
       html.window.open(url, "Mail Us");
     } else if (await canLaunch(url)) {
