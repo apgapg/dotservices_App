@@ -52,14 +52,16 @@ flutter:
   # the material Icons class.
   uses-material-design: true
   fonts:
-    - family: Nunito
+    - family: Lato
       fonts:
-        - asset: assets/fonts/nunitoSemiBold.ttf
-        - asset: assets/fonts/nunitoBold.ttf
+        - asset: assets/fonts/lato/Lato-Black.ttf
+          weight: 800
+        - asset: assets/fonts/lato/Lato-Bold.ttf
           weight: 700
-    - family:  MyIcons
-      fonts:
-        - asset: assets/fonts/MyIcons.ttf
+        - asset: assets/fonts/lato/Lato-Light.ttf
+          weight: 300
+        - asset: assets/fonts/lato/Lato-Regular.ttf
+          weight: 500
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/images/logo.png

@@ -18,13 +18,17 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.grey,
         appBarTheme: AppBarTheme(
           iconTheme: IconThemeData(color: Colors.black87),
-          elevation: 2,
+          elevation: 1,
           color: Colors.white,
         ),
-        fontFamily: 'Nunito',
+        fontFamily: 'Lato',
       ),
       darkTheme: ThemeData(
         brightness: Brightness.dark,
+        appBarTheme: AppBarTheme(
+          elevation: 1,
+        ),
+        fontFamily: 'Lato',
       ),
       home: HomePage(),
     );

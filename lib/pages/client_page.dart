@@ -30,192 +30,201 @@ class _ClientPageState extends State<ClientPage> {
             onPressed: () {
               onInfoTap();
             },
-          )
+          ),
+          SizedBox(
+            width: 8,
+          ),
         ],
       ),
       body: Container(
+        alignment: Alignment.topCenter,
         child: SingleChildScrollView(
-          padding: EdgeInsets.symmetric(vertical: 4, horizontal: 4),
-          child: BorderContainer(
-            margin: EdgeInsets.all(4),
-            child: Container(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: <Widget>[
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        Text(
-                          widget.item.name,
-                          style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
+          padding: EdgeInsets.symmetric(vertical: 8, horizontal: 4),
+          child: ConstrainedBox(
+            constraints: BoxConstraints(maxWidth: 600),
+            child: BorderContainer(
+              margin: EdgeInsets.all(4),
+              child: Container(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: <Widget>[
+                    Padding(
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          Text(
+                            widget.item.name,
+                            style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
-                        ),
-                        SizedBox(
-                          height: 8,
-                        ),
-                        Text(
-                          widget.item.description,
-                          style: TextStyle(
-                            fontSize: 14,
+                          SizedBox(
+                            height: 8,
                           ),
-                        ),
-                        SizedBox(
-                          height: 8,
-                        ),
-                        Divider(),
-                        SizedBox(
-                          height: 8,
-                        ),
-                        Text(
-                          "CATEGORY",
-                          style: TextStyle(
-                            fontWeight: FontWeight.w700,
+                          Text(
+                            widget.item.description,
+                            style: TextStyle(
+                              fontSize: 14,
+                            ),
                           ),
-                        ),
-                        SizedBox(
-                          height: 8,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: <Widget>[
-                            Flexible(
-                              fit: FlexFit.tight,
-                              flex: 1,
-                              child: Wrap(
-                                children: <Widget>[
-                                  for (Category category
-                                      in widget.item.categories)
-                                    InkWell(
-                                      onTap: () {
-                                        onCategoryTap(category, context);
-                                      },
-                                      child: Container(
-                                        padding: EdgeInsets.symmetric(
-                                            horizontal: 12, vertical: 8),
-                                        decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(8),
-                                          color: Theme.of(context)
-                                              .chipTheme
-                                              .backgroundColor,
-                                        ),
-                                        child: Text(
-                                          category.category,
-                                          style: TextStyle(
-                                            fontSize: 14,
-                                            fontWeight: FontWeight.w700,
+                          SizedBox(
+                            height: 8,
+                          ),
+                          Divider(),
+                          SizedBox(
+                            height: 8,
+                          ),
+                          Text(
+                            "CATEGORY",
+                            style: TextStyle(
+                              fontWeight: FontWeight.w700,
+                            ),
+                          ),
+                          SizedBox(
+                            height: 8,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: <Widget>[
+                              Flexible(
+                                fit: FlexFit.tight,
+                                flex: 1,
+                                child: Wrap(
+                                  children: <Widget>[
+                                    for (Category category
+                                        in widget.item.categories)
+                                      InkWell(
+                                        onTap: () {
+                                          onCategoryTap(category, context);
+                                        },
+                                        child: Container(
+                                          padding: EdgeInsets.symmetric(
+                                              horizontal: 12, vertical: 8),
+                                          decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(8),
+                                            color: Theme.of(context)
+                                                .chipTheme
+                                                .backgroundColor,
+                                          ),
+                                          child: Text(
+                                            category.category,
+                                            style: TextStyle(
+                                              fontSize: 14,
+                                              fontWeight: FontWeight.w700,
+                                            ),
                                           ),
                                         ),
                                       ),
-                                    ),
-                                ],
-                                spacing: 8,
-                                runSpacing: 8,
+                                  ],
+                                  spacing: 8,
+                                  runSpacing: 8,
+                                ),
                               ),
-                            ),
-                          ],
-                        ),
-                        SizedBox(
-                          height: 8,
-                        ),
-                        Divider(),
-                        SizedBox(
-                          height: 8,
-                        ),
-                        Text(
-                          "ADDRESS",
-                          style: TextStyle(fontWeight: FontWeight.w700),
-                        ),
-                        Row(
-                          children: <Widget>[
-                            Flexible(
-                              fit: FlexFit.tight,
-                              flex: 1,
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: <Widget>[
-                                  Padding(
-                                    padding: const EdgeInsets.only(top: 4.0),
-                                    child: Text(
-                                      widget.item.areas
-                                          .map((area) => area.area)
-                                          .join(", "),
-                                      style: TextStyle(color: Colors.grey[800]),
-                                    ),
-                                  ),
-                                  if (checkIfNotEmpty(widget.item.address))
+                            ],
+                          ),
+                          SizedBox(
+                            height: 8,
+                          ),
+                          Divider(),
+                          SizedBox(
+                            height: 8,
+                          ),
+                          Text(
+                            "ADDRESS",
+                            style: TextStyle(fontWeight: FontWeight.w700),
+                          ),
+                          Row(
+                            children: <Widget>[
+                              Flexible(
+                                fit: FlexFit.tight,
+                                flex: 1,
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: <Widget>[
                                     Padding(
-                                      padding: const EdgeInsets.only(top: 8.0),
+                                      padding: const EdgeInsets.only(top: 4.0),
                                       child: Text(
-                                        widget.item.address,
-                                        style: TextStyle(
-                                        ),
+                                        widget.item.areas
+                                            .map((area) => area.area)
+                                            .join(", "),
+                                        style:
+                                            TextStyle(color: Colors.grey[800]),
                                       ),
                                     ),
-                                ],
+                                    if (checkIfNotEmpty(widget.item.address))
+                                      Padding(
+                                        padding:
+                                            const EdgeInsets.only(top: 8.0),
+                                        child: Text(
+                                          widget.item.address,
+                                          style: TextStyle(),
+                                        ),
+                                      ),
+                                  ],
+                                ),
                               ),
-                            ),
-                            SizedBox(
-                              width: 16,
-                            ),
-                            FloatingActionButton(
-                              mini: true,
-                              child: Icon(
-                                Icons.location_on,
-                                color: Colors.white,
-                                size: 24,
+                              SizedBox(
+                                width: 16,
                               ),
-                              backgroundColor: Colors.green,
-                              onPressed: () {},
-                            )
-                          ],
-                        ),
-                        SizedBox(
-                          height: 8,
-                        ),
-                        Divider(),
-                        SizedBox(
-                          height: 8,
-                        ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.stretch,
-                          children: <Widget>[
-                            RaisedButton(
-                              onPressed: () {
-                                onPhoneTap(widget.item.number);
-                              },
-                              child: Row(
-                                mainAxisSize: MainAxisSize.min,
-                                children: <Widget>[
-                                  Icon(
-                                    Icons.phone,
-                                    color: Colors.white,
-                                  ),
-                                  SizedBox(
-                                    width: 12,
-                                  ),
-                                  Text(
-                                    "CONTACT",
-                                    style: TextStyle(
-                                      fontSize: 14,
+                              FloatingActionButton(
+                                mini: true,
+                                child: Icon(
+                                  Icons.location_on,
+                                  color: Colors.white,
+                                  size: 24,
+                                ),
+                                backgroundColor: Colors.green,
+                                onPressed: () {},
+                              )
+                            ],
+                          ),
+                          SizedBox(
+                            height: 8,
+                          ),
+                          Divider(),
+                          SizedBox(
+                            height: 8,
+                          ),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.stretch,
+                            children: <Widget>[
+                              RaisedButton(
+                                onPressed: () {
+                                  onPhoneTap(widget.item.number);
+                                },
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: <Widget>[
+                                    Icon(
+                                      Icons.phone,
                                       color: Colors.white,
-                                      fontWeight: FontWeight.w700,
                                     ),
-                                  ),
-                                ],
+                                    SizedBox(
+                                      width: 12,
+                                    ),
+                                    Text(
+                                      "CONTACT",
+                                      style: TextStyle(
+                                        fontSize: 14,
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.w700,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                color: Colors.blueAccent,
                               ),
-                              color: Colors.blueAccent,
-                            ),
-                          ],
-                        )
-                      ],
-                    ),
-                  )
-                ],
+                            ],
+                          )
+                        ],
+                      ),
+                    )
+                  ],
+                ),
               ),
             ),
           ),

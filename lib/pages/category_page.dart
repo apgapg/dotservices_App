@@ -42,9 +42,10 @@ class _CategoryPageState extends State<CategoryPage> {
               var list = snapshot.data;
               if (list.length > 0) {
                 return ListView(
-                  padding: EdgeInsets.symmetric(vertical: 8,horizontal: 8),
+                  padding: EdgeInsets.symmetric(vertical: 8, horizontal: 8),
                   children: <Widget>[
-                    InfoWidget("Showing all with '${widget.categoryItem.category}' category"),
+                    InfoWidget(
+                        "Showing all with '${widget.categoryItem.category}' category"),
                     ...list
                         .map(
                           (item) => Container(
