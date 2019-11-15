@@ -1,6 +1,7 @@
 import 'package:dot_my_services/model/client_model.dart';
 import 'package:dot_my_services/pages/category_page.dart';
 import 'package:dot_my_services/pages/info_page.dart';
+import 'package:dot_my_services/utils/app_utils.dart';
 import 'package:dot_my_services/utils/toast_utils.dart';
 import 'package:dot_my_services/utils/top_level.dart';
 import 'package:dot_my_services/widgets/border_container.dart';
@@ -252,12 +253,7 @@ class _ClientPageState extends State<ClientPage> {
   }
 
   void onPhoneTap(String mobile) async {
-    var url = 'tel:$mobile';
-    if (await canLaunch(url)) {
-      await launch(url);
-    } else {
-      ToastUtils.showToast(message: 'Couldnt call');
-    }
+    AppUtils.onPhoneTap(mobile);
   }
 
   void onInfoTap() {
