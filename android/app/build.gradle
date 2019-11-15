@@ -35,7 +35,7 @@ android {
         sourceCompatibility 1.8
         targetCompatibility 1.8
     }
-    compileSdkVersion 28
+    compileSdkVersion 29
 
     lintOptions {
         disable 'InvalidPackage'
@@ -44,9 +44,9 @@ android {
     defaultConfig {
         applicationId "com.dotservices.android"
         minSdkVersion 16
-        targetSdkVersion 28
-        versionCode 2
-        versionName "1.1.0"
+        targetSdkVersion 29
+        versionCode 3
+        versionName "1.2.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 
