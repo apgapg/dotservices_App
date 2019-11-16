@@ -1,3 +1,4 @@
+import 'dart:html' as html;
 
 import 'package:dot_my_services/utils/toast_utils.dart';
 import 'package:flutter/foundation.dart';
@@ -7,7 +8,7 @@ class AppUtils {
   static void onPhoneTap(String mobile) async {
     var url = 'tel:$mobile';
     if (kIsWeb) {
-     // html.window.open(url, "Contact Us");
+      html.window.open(url, "Contact Us");
     } else if (await canLaunch(url)) {
       await launch(url);
     } else {
@@ -18,7 +19,7 @@ class AppUtils {
   static void onMailTap() async {
     var url = 'mailto:dotappservices@gmail.com?subject=Information&body=Hi';
     if (kIsWeb) {
-      //html.window.open(url, "Mail Us");
+      html.window.open(url, "Mail Us");
     } else if (await canLaunch(url)) {
       await launch(url);
     } else {
@@ -29,7 +30,7 @@ class AppUtils {
   static void onFormTap() async {
     var url = 'https://forms.gle/AMK412nHZUdHP7Nd9';
     if (kIsWeb) {
-      //html.window.open(url, "Registration");
+      html.window.open(url, "Registration");
     } else if (await canLaunch(url)) {
       await launch(url);
     } else {
