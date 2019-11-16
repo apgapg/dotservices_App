@@ -1,25 +1,45 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8">
-  <title>DOT Services</title>
-  <link rel="shortcut icon" type="image/x-icon" href="./assets/assets/images/logo.png"/>
-  <meta property="og:title" content="DOT Services" />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://dot-services.firebaseapp.com" />
-  <meta property="og:image" content="https://firebasestorage.googleapis.com/v0/b/dot-services.appspot.com/o/images%2Flink.jpg?alt=media&token=c7e12ca6-862b-4485-abc8-34c97aa3f444" />
-  <meta property="og:description" content="One Stop Platform for finding Quality Local Service Providers" />
+    <meta charset="UTF-8">
+    <title>DOT Services</title>
+    <link rel="shortcut icon" type="image/x-icon" href="./assets/assets/images/logo.png"/>
+    <meta property="og:title" content="DOT Services"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:url" content="https://dot-services.firebaseapp.com"/>
+    <meta property="og:image"
+          content="https://firebasestorage.googleapis.com/v0/b/dot-services.appspot.com/o/images%2Flink.jpg?alt=media&token=c7e12ca6-862b-4485-abc8-34c97aa3f444"/>
+    <meta property="og:description" content="One Stop Platform for finding Quality Local Service Providers"/>
 </head>
 <body>
-  <script src="main.dart.js" type="application/javascript"></script>
-  <!-- The core Firebase JS SDK is always required and must be listed first -->
-  <script src="/__/firebase/7.4.0/firebase-app.js"></script>
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '797964717321447',
+      xfbml      : true,
+      version    : 'v5.0'
+    });
+    FB.AppEvents.logPageView();
+  };
 
-  <!-- TODO: Add SDKs for Firebase products that you want to use
-       https://firebase.google.com/docs/web/setup#available-libraries -->
-  <script src="/__/firebase/7.4.0/firebase-analytics.js"></script>
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "https://connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
 
-  <!-- Initialize Firebase -->
-  <script src="/__/firebase/init.js"></script>
+</script>
+<script src="main.dart.js" type="application/javascript"></script>
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="/__/firebase/7.4.0/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="/__/firebase/7.4.0/firebase-analytics.js"></script>
+
+<!-- Initialize Firebase -->
+<script src="/__/firebase/init.js"></script>
 </body>
 </html>
