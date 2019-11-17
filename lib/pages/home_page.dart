@@ -9,7 +9,6 @@ import 'package:dot_my_services/utils/stream_error_widget.dart';
 import 'package:dot_my_services/widgets/circular_progress.dart';
 import 'package:dot_my_services/widgets/client_card.dart';
 import 'package:dot_my_services/widgets/my_raised_button.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -86,7 +85,7 @@ class _HomePageState extends State<HomePage> {
                       .toList();
                   return ListView(
                     children: <Widget>[
-                      if (kIsWeb)
+                      if (isLargeScreen(context))
                         Stack(
                           alignment: Alignment.center,
                           children: <Widget>[
@@ -310,7 +309,7 @@ class _HomePageState extends State<HomePage> {
                                   child: item,
                                 ))
                             .toList(),
-                      if (kIsWeb)
+                      if (isLargeScreen(context))
                         Container(
                           height: 80,
                           color: Colors.black87,
