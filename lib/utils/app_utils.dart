@@ -37,4 +37,28 @@ class AppUtils {
       ToastUtils.showToast(message: 'Couldnt open link');
     }
   }
+
+  static void onPlaystoreTap() {
+    _openLink(
+        "https://play.google.com/store/apps/details?id=com.dotservices.android",
+        "Playstore");
+  }
+
+  static void onInstagramTap() {
+    _openLink("https://www.instagram.com/dotappservices/", "Instagram");
+  }
+
+  static void onFbTap() {
+    _openLink("https://www.facebook.com/dotappservices/", "Facebook");
+  }
+
+  static void _openLink(String url, String name) async {
+    if (kIsWeb) {
+      html.window.open(url, "Registration");
+    } else if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      ToastUtils.showToast(message: 'Couldnt open link');
+    }
+  }
 }

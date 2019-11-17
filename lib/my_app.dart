@@ -1,6 +1,7 @@
 import 'package:dot_my_services/pages/home_page.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_analytics/observer.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class MyApp extends StatelessWidget {
@@ -18,18 +19,20 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.grey,
         appBarTheme: AppBarTheme(
           iconTheme: IconThemeData(color: Colors.black87),
-          elevation: 1,
+          elevation: 0.5,
           color: Colors.white,
         ),
         fontFamily: 'Lato',
       ),
-      darkTheme: ThemeData(
-        brightness: Brightness.dark,
-        appBarTheme: AppBarTheme(
-          elevation: 1,
-        ),
-        fontFamily: 'Lato',
-      ),
+      darkTheme: kIsWeb
+          ? null
+          : ThemeData(
+              brightness: Brightness.dark,
+              appBarTheme: AppBarTheme(
+                elevation: 1,
+              ),
+              fontFamily: 'Lato',
+            ),
       home: HomePage(),
     );
   }
