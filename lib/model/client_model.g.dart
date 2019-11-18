@@ -37,11 +37,15 @@ Map<String, dynamic> _$ClientItemToJson(ClientItem instance) =>
     };
 
 Category _$CategoryFromJson(Map<String, dynamic> json) {
-  return Category(json['_id'] as String, json['category'] as String);
+  return Category(json['_id'] as String, json['category'] as String,
+      json['image'] as String);
 }
 
-Map<String, dynamic> _$CategoryToJson(Category instance) =>
-    <String, dynamic>{'_id': instance.id, 'category': instance.category};
+Map<String, dynamic> _$CategoryToJson(Category instance) => <String, dynamic>{
+      '_id': instance.id,
+      'category': instance.category,
+      'image': instance.image
+    };
 
 Area _$AreaFromJson(Map<String, dynamic> json) {
   return Area(json['area'] as String);

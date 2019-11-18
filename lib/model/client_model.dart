@@ -69,8 +69,13 @@ class Category {
   @JsonKey(name: "_id")
   final String id;
   final String category;
+  final String image;
 
-  Category(this.id, this.category);
+  Category(
+    this.id,
+    this.category,
+    this.image,
+  );
 
   factory Category.fromJson(Map<String, dynamic> json) =>
       _$CategoryFromJson(json);

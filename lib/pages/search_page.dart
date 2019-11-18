@@ -2,6 +2,7 @@ import 'package:dot_my_services/bloc/search_bloc.dart';
 import 'package:dot_my_services/model/client_model.dart';
 import 'package:dot_my_services/pages/category_page.dart';
 import 'package:dot_my_services/utils/stream_error_widget.dart';
+import 'package:dot_my_services/utils/top_level.dart';
 import 'package:dot_my_services/widgets/border_container.dart';
 import 'package:dot_my_services/widgets/no_items_found.dart';
 import 'package:flutter/material.dart';
@@ -58,13 +59,27 @@ class _SearchPageState extends State<SearchPage> {
                                 padding: EdgeInsets.symmetric(
                                     horizontal: 12, vertical: 8),
                                 alignment: Alignment.center,
-                                child: Text(
-                                  category.category,
-                                  style: TextStyle(
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w700,
-                                  ),
-                                  textAlign: TextAlign.center,
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: <Widget>[
+                                    if (checkIfNotEmpty(category.image))
+                                      Image.network(
+                                        category.image,
+                                        height: 24,
+                                      ),
+                                    if (checkIfNotEmpty(category.image))
+                                      SizedBox(
+                                        width: 8,
+                                      ),
+                                    Text(
+                                      category.category,
+                                      style: TextStyle(
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.w700,
+                                      ),
+                                      textAlign: TextAlign.center,
+                                    ),
+                                  ],
                                 ),
                               ),
                             ),

@@ -1,5 +1,6 @@
 import 'package:dot_my_services/model/client_model.dart';
 import 'package:dot_my_services/pages/category_page.dart';
+import 'package:dot_my_services/utils/top_level.dart';
 import 'package:dot_my_services/widgets/border_container.dart';
 import 'package:flutter/material.dart';
 
@@ -97,12 +98,28 @@ class ClientCard extends StatelessWidget {
                                             .chipTheme
                                             .backgroundColor,
                                       ),
-                                      child: Text(
-                                        item.categories[0].category,
-                                        style: TextStyle(
-                                          fontSize: 14,
-                                          fontWeight: FontWeight.w700,
-                                        ),
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.min,
+                                        children: <Widget>[
+                                          if (checkIfNotEmpty(
+                                              item.categories[0].image))
+                                            Image.network(
+                                              item.categories[0].image,
+                                              height: 24,
+                                            ),
+                                          if (checkIfNotEmpty(
+                                              item.categories[0].image))
+                                            SizedBox(
+                                              width: 8,
+                                            ),
+                                          Text(
+                                            item.categories[0].category,
+                                            style: TextStyle(
+                                              fontSize: 14,
+                                              fontWeight: FontWeight.w700,
+                                            ),
+                                          ),
+                                        ],
                                       ),
                                     ),
                                   ),
