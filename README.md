@@ -1,21 +1,23 @@
-# dot_my_services
+# DOT Services
 
-A new Flutter project.
+This is the official repo of the mobile/web application of DOT Services. 
+This app is build using Flutter Sdk.
 
-## Getting Started
+Website: https://dotappservices.in/
 
-This project is a starting point for a Flutter application.
+<a href='https://play.google.com/store/apps/details?id=com.dotservices.android&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img alt='Get it on Google Play' height="200" src='https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png'/></a>
 
-A few resources to get you started if this is your first Flutter project:
+## Concept
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+DOT Services has been developed to cater the problems of people of finding local technicians like Plumber, Electrician, Mechanics, Tutors etc. One can easily find different service providers and can connect with them easily.
+From technician's side, advertisement solution is also given so as to highlight their services at the top.
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+The backend is build on NodeJS Express hosted on Azure, having database MongoDB hosted on mLab.
 
-flutter pub run build_runner build 
+NodeJS backend code: [dotservices_backend](https://github.com/apgapg/dotservices_backend)
 
-flutter clean && flutter build web && firebase deploy
+Website code(VueJs+Vuetify): [dotservices_web](https://github.com/apgapg/dotservices_web)
 
+
+Playstore: https://play.google.com/store/apps/details?id=com.dotservices.android
+Website: (VueJs+Vuetify): https://dotappservices.in/
